@@ -1,0 +1,124 @@
+import Image from 'next/image'
+import { client } from "@/sanity/lib/client";
+import { jelly as jellyType } from '@/app/fetch_data/jelly_data';
+import { urlFor } from '@/sanity/lib/image';
+import Navigation from '@/app/ui/navigation';
+import Footer from '@/app/ui/footer';
+import { Button } from '@/components/ui/button';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+import Link from "next/link";
+import Add from "@/app/components/add"
+import Pudding_data from '@/app/fetch_data/pudding_data';
+
+
+interface Params {
+  params: {
+    slug:string
+  };
+}
+
+interface Slug {
+  current: string;
+}
+
+interface Image {
+  asset: {
+    _id: string;
+    url: string;
+  };
+}
+
+
+const jelly = async (params:Params) => {
+
+  const {slug} = params.params;
+
+  const jelly:jellyType  = await client.fetch(`
+    *[_type == "jelly" && slug.current == $slug]{
+          name,
+          description,
+            "slug":slug.current,
+          price,
+          image{
+            asset->{
+              _id,
+              url
+      }
+    },
+  }[0]`, {slug}
+) 
+
+
+  
+
+
+  return (
+    <main>
+      <Navigation/>
+      <div className="container w-[1000px] place-self-center py-10">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage className="font-bold">
+              <Link href="/jelly">
+                    jelly
+              </Link>
+              </BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        </div>
+        
+
+
+      <div className="container w-[1000px] place-self-center md:grid grid-cols-2 gap-10">
+      <div className="container w-[500px] place-self-center bg-cover">
+        <Image src={urlFor(jelly.image).url()} alt={ jelly.name } width={600} height={600} className='container w-[500px] h-[500px] bg-cover'/>
+      </div>
+      <div className='container w-[500px] place-self-center'>
+        <h2 className='text-4xl font-bold pt-10 md:pt-0'>
+          {jelly.name}
+          </h2>
+        <h3 className='container w-[150px] mt-5 mb-10 bg-pink-500 rounded-full text-center text-white text-lg font-semibold py-2'>
+          Rs. {jelly.price}
+          <span className='text-lg text-gray-100 line-through pl-5'>120</span>
+        </h3>
+        <p className='flex gap-5 pb-5'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-truck"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+        3-4 Days</p>
+        <hr/>
+        <p className='text-base text-gray-500 text-justify py-5'>
+          {jelly.description}
+          </p>
+          <hr/>
+          <div className='flex'>
+          <Add/>
+          
+        <Button className='items-center bg-pink-500 hover:bg-white text-white hover:text-pink-500 hover:border-2 hover:border-pink-500 my-5'>
+        <Link href="/cart" className='flex gap-3'> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-shopping-cart hover:stroke-white"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+        Add to Cart</Link>
+        </Button>
+        </div>
+             
+      </div>
+      </div>
+      <Pudding_data/>
+      <Footer/>
+    </main>
+  )
+}
+
+export default jelly;
