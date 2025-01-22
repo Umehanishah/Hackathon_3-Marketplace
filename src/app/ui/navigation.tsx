@@ -1,3 +1,5 @@
+"use client";
+
 
 import Link from "next/link";
 import Image from "next/image";
@@ -13,9 +15,13 @@ import {
 import Login_button from "./login_button";
 import Search from "./search";
 import { Button } from "@/components/ui/button";
+import { ShoppingBag } from "lucide-react";
+import { useShoppingCart } from "use-shopping-cart";
+
+
 
 export default function Navigation() {
-  
+    const { handleCartClick } = useShoppingCart();
     return ( 
         <section>
             <div>
@@ -110,11 +116,18 @@ export default function Navigation() {
                         <div className="flex gap-5 items-center">
                         <Search/>
                         
-                        <div>
-                        <Button>
-                        Cart
-                      </Button>
-                    </div>
+                        <div className="flex divide-x">
+                        <Button
+                            variant={"outline"}
+                            onClick={() => handleCartClick()}
+                            className="flex flex-col gap-y-1.5 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-none bg-pink-500 hover:bg-pink-700"
+                        >
+                            <ShoppingBag className="stroke-white"/>
+                            <span className="hidden text-xs font-semibold text-white sm:block">
+                            Cart
+                            </span>
+                        </Button>
+                        </div>
                         
                             
                         </div>

@@ -6,6 +6,7 @@ import Image from "next/image";
 
 
 export interface pudding {
+  [x: string]: any;
   name: string;
   description: string;
   slug: string;

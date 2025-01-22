@@ -9,7 +9,6 @@ import Categories from './ui/categories'
 
 
 
-
 const Home = () => {
   return (
     <>
@@ -19,6 +18,7 @@ const Home = () => {
       <Pudding_data/>
       <Categories/>
       <Jelly_data/>
+     
       <Footer/>
     </div>
     </>
