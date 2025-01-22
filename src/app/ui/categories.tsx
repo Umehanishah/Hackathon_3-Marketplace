@@ -10,14 +10,14 @@ import Link from "next/link";
 export default function Categories() {
     return ( 
         <section>
-            <div className="container w-[1200px] lg:h-[500px] place-self-center">
+            <div className="container w-[500px] lg:w-[1000px] lg:h-[500px] place-self-center">
 
                     <div className="place-self-center items-center pt-10">
-                    <h1 className="text-2xl text-center font-bold py-10">Explore Our Exclusive Collections</h1>
+                    <h1 className="text-xl lg:text-2xl text-center font-bold py-5">Explore Our Exclusive Collections</h1>
                     </div>
                 
 
-            <div className="container w-[400px] md:w-[1200px] place-self-center pt-10">
+            <div className="container w-[400px] md:[500px] lg:w-[1000px] place-self-center pt-10">
             
                 <div className="grid lg:grid-cols-2 gap-5 place-self-center">
                 <div className="container w-[500px] h-[300px] bg-cover rounded-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105  duration-300">

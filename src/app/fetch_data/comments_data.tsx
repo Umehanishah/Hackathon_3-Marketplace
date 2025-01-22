@@ -28,7 +28,7 @@ export default async function Data() {
  
 
   return (
-    <div className="container mx-auto w-full md:w-[1000px]">
+    <div className="container mx-auto  w-[500px] md:w-[700px] lg:w-[1000px]">
            <h1 className="text-2xl text-center font-bold py-10">
             Comments & Questions of our Customers</h1>
   

@@ -45,8 +45,8 @@ export default async function Data() {
  
 
   return (
-    <div className="container mx-auto w-full md:w-[1000px]">
-      <h1 className="text-2xl text-center font-bold py-10">Our Heavenly Pudding Collection</h1>
+    <div className="container mx-auto lg:w-[1000px] pt-5 lg:pt-0">
+      <h1 className="text-xl lg:text-2xl text-center font-bold py-10">Our Heavenly Pudding Collection</h1>
   <div className="hidden lg:grid grid-cols-3 gap-5 gap-y-10">
     {pudding.map((pudding) => (
       <Link href={`/slug/pudding/${pudding.slug}`} key={pudding.slug}>
@@ -102,24 +102,26 @@ export default async function Data() {
 
   {/* Mobile Scroll Area */}
   <div className="block lg:hidden px-10">
-    <ScrollArea className="w-full whitespace-nowrap rounded-md">
+    <ScrollArea className="container w-[500px] md:w-[700px] place-self-center whitespace-nowrap rounded-md">
       <div className="flex w-max space-x-4 p-4">
         {pudding.map((pudding) => (
           <figure key={pudding.slug} className="shrink-0">
+            <Link href={`/slug/pudding/${pudding.slug}`} key={pudding.slug}>
+           <div className="border">
             <div className="overflow-hidden rounded-md">
               <Image
                 src={urlFor(pudding.image).url()}
-                alt={pudding.name} width={80} height={80}
+                alt={pudding.name} width={400} height={400}
                 className="aspect-[1/2] h-80 w-60 object-cover"
               />
             </div>
             <figcaption className="flex justify-between px-2 pt-2 text-base text-black">
-              <div>
+              <div className="py-4">
               {pudding.name} 
               <br/>
               Rs. {pudding.price}
               </div>
-              <div className="items-center pt-1 px-1 hover:bg-pink-400 rounded-md">
+              <div className="items-center my-5 pt-1 px-1 hover:bg-pink-400 rounded-md">
               
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -139,13 +141,19 @@ export default async function Data() {
                 </svg>
             
             </div>
+            
             </figcaption>
+            </div>
+            </Link>
           </figure>
+          
         ))}
       </div>
+      
       <ScrollBar orientation="horizontal" />
     </ScrollArea>
   </div>
+  
 </div>
   )
 }

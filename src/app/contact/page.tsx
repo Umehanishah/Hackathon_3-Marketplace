@@ -18,7 +18,7 @@ export default function Contact() {
     <main>
       <Navigation />
 
-      <div className="container w-[1000px] place-self-center pt-10">
+      <div className="container w-[500px] md:w-[700px] lg:w-[1000px] place-self-center pt-10">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -40,7 +40,7 @@ export default function Contact() {
 
       {/* Contact Section */}
       <section className="py-10 place-self-center">
-        <div className="container w-[600px] md:w-[900px] place-self-center text-center">
+        <div className="container  w-[500px] md:w-[700px] lg:w-[800px] place-self-center text-center">
           <h1 className="text-xl md:text-3xl font-bold">Get In Touch With Us</h1>
           <p className="text-gray-500 text-xs md:text-sm mt-3 px-10">
             For more information about our products & services, please feel free to drop us an email. 
@@ -48,7 +48,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="container w-[500px] md:w-[1000px] mt-10 grid grid-cols-1 lg:grid-cols-2">
+        <div className="container w-[500px] lg:w-[1000px] mt-10 grid grid-cols-1 lg:grid-cols-2">
           {/* Contact Information */}
           <div className="container w-[500px] px-10 md:px-0 space-y-8">
             
@@ -86,7 +86,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="container w-[500px] px-10 md:px-0 pt-10 md:pt-0 place-self-center">
+          <div className="container w-[500px] px-10 md:px-0 pt-10 lg:pt-0 place-self-center">
             <form className="space-y-4">
               <p className="text-xs">Your Name</p>
               <Input placeholder="Abc" className="bg-pink-50 text-gray-500" />

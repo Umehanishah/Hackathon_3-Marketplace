@@ -6,11 +6,11 @@ import { Button } from "@/components/ui/button";
 export default function Footer() {
     return ( 
         <section>
-            <div className="container w-[400px] md:w-[1100px] md:h-[300px] place-self-center pt-20">
+            <div className="container w-[400px] lg:w-[1000px] lg:h-[300px] place-self-center pt-20">
                 <hr/>
-                    <div className="continer w-[400px] md:w-[1100px] md:h-[300px] items-center pt-20">
+                    <div className="continer w-[400px] md:w-[600px] lg:w-[1000px] lg:h-[300px] place-self-center items-center pt-20">
                     
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 place-self-center">
                         <div className="continer w-[400px]">
                             <Image src="/logo.png" alt="logo" width={150} height={50}/>
                             <p className="continer w-[300px] text-xs text-gray-400 pt-5">
@@ -50,7 +50,7 @@ export default function Footer() {
                                     </ul>
                                 </div>
 
-                                <div className="continer w-[350px] pt-10 md:pt-0">
+                                <div className="continer w-[350px] pt-10 lg:pt-0">
                                 <h2 className="text-xs text-gray-500 pb-2">NEWSLETTER</h2>
                                 <div className="flex gap-3">
                                 <Input type="email" placeholder="Email" className="mt-3 text-xs"/>
