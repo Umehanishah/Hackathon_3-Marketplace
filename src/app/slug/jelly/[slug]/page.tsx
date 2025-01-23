@@ -7,6 +7,7 @@ import Footer from '@/app/ui/footer';
 import { Button } from '@/components/ui/button';
 import {
   Breadcrumb,
+  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
@@ -16,13 +17,18 @@ import {
 import Link from "next/link";
 import Add from "@/app/components/add"
 import Pudding_data from "@/app/fetch_data/pudding_data"
-import AddToBag from '@/app/components/AddToBag';
-import CheckoutNow from "@/app/components/CheckoutNow";
+
 
 
 interface Params {
   params: {
-    slug:string
+    slug:string;
+  };
+}
+
+interface PageProps {
+  params: {
+    slug: string;
   };
 }
 
@@ -65,21 +71,17 @@ const jelly = async (params:Params) => {
     <main>
       <Navigation/>
       <div className="container w-[1000px] place-self-center py-10">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="font-bold">
-              <Link href="/jelly">
-                    jelly
-              </Link>
-              </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+      <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/shop">shop</BreadcrumbLink>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
 
         </div>
         
@@ -108,20 +110,6 @@ const jelly = async (params:Params) => {
           <div className='flex'>
           <Add/>
           
-          <div className="flex gap-2.5">
-              <AddToBag
-                currency="PKR"
-                description={jelly.description}
-                image={jelly.images[0]}
-                name={jelly.name}
-                price={jelly.price} price_id={''}              />
-              <CheckoutNow
-                currency="PKR"
-                description={jelly.description}
-                image={jelly.images[0]}
-                name={jelly.name}
-                price={jelly.price} price_id={''}                />
-            </div>
              
       </div>
       </div>

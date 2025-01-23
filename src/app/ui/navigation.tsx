@@ -85,12 +85,8 @@ export default function Navigation() {
                                 <Search/>
                             </div>
                             <div className="flex divide-x">
-                                <Button
-                                    variant={"outline"}
-                                    onClick={() => handleCartClick()}
-                                    className="flex flex-col gap-y-1.5 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-none bg-pink-500 hover:bg-pink-700">
-                                    <ShoppingBag className="stroke-white"/>
-                                    <span className="hidden text-xs font-semibold text-white sm:block">Cart</span>
+                                <Button className="hidden text-xs font-semibold text-white sm:block">
+                                    Cart
                                 </Button>
                             </div>
                         </div>

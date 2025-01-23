@@ -18,8 +18,6 @@ import {
 import Link from "next/link";
 import Add from "@/app/components/add"
 import Jelly_data from '@/app/fetch_data/jelly_data';
-import AddToBag from '@/app/components/AddToBag';
-import CheckoutNow from '@/app/components/CheckoutNow';
 
 
 interface Params {
@@ -66,21 +64,18 @@ const pudding = async (params:Params) => {
     <main>
       <Navigation/>
       <div className="container w-[1000px] place-self-center py-10">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="font-bold">
-              <Link href="/pudding">
-                    pudding
-              </Link>
-              </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+      <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/shop">shop</BreadcrumbLink>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+
 
         </div>
         
@@ -110,20 +105,7 @@ const pudding = async (params:Params) => {
           <div className='flex'>
           <Add/>
               
-             <div className="flex gap-2.5">
-                      <AddToBag
-                        currency="PKR"
-                        description={pudding.description}
-                        image={pudding.images[0]}
-                        name={pudding.name}
-                        price={pudding.price} price_id={''}              />
-                      <CheckoutNow
-                        currency="PKR"
-                        description={pudding.description}
-                        image={pudding.images[0]}
-                        name={pudding.name}
-                        price={pudding.price} price_id={''}                />
-                    </div>
+             
         </div>
              
       </div>
