@@ -18,8 +18,7 @@ const Home = () => {
       <Pudding_data/>
       <Categories/>
       <Jelly_data/>
-     
-      <Footer/>
+     <Footer/>
     </div>
     </>
   )

@@ -18,7 +18,8 @@ import {
 import Link from "next/link";
 import Add from "@/app/components/add"
 import Jelly_data from '@/app/fetch_data/jelly_data';
-
+import AddToBag from "@/app/components/AddToBag";
+import CheckoutNow from "@/app/components/CheckoutNow";
 
 interface Params {
   params: {
@@ -105,7 +106,7 @@ const pudding = async (params:Params) => {
           <div className='flex'>
           <Add/>
               
-             
+          
         </div>
              
       </div>

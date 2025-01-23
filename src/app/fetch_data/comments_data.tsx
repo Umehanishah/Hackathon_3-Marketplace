@@ -31,9 +31,9 @@ export default async function Data() {
     <div className="container mx-auto  w-[500px] md:w-[700px] lg:w-[1000px]">
            <h1 className="text-2xl text-center font-bold py-10">
             Comments & Questions of our Customers</h1>
-  
+          <div>
             {comments.map((comment, index) => (
-          <div className="items-center px-2 py-2">
+          <div key={comment.name} className="items-center px-2 py-2">
             <h1 className="text-base font-bold pt-4 text-black">
                 {comment.name}
               </h1>
@@ -44,7 +44,6 @@ export default async function Data() {
            </div>
             ))}
         </div>
-      
- 
+        </div>
  )
 }
