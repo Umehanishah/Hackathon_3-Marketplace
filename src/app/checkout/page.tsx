@@ -5,7 +5,7 @@ const Checkout= () => {
   return (
     <div>
       
-      <CheckoutNow name={''} description={''} price={0} currency={''} image={undefined} price_id={''}/>
+      <h1>Checkout</h1>
     </div>
   )
 }
