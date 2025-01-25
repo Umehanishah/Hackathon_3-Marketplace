@@ -66,7 +66,7 @@ export default function About() {
        </div>
         
 
-      <hr/>
+      
       </div>
       <Jelly_data/>
 

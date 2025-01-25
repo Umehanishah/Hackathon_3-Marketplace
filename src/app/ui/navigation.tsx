@@ -13,15 +13,15 @@ import {
   } from "@/components/ui/sheet"
   import {Menu} from "lucide-react";
 import Login_button from "./login_button";
-import Search from "./search";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag } from "lucide-react";
 import { useShoppingCart } from "use-shopping-cart";
-
+import { useCart } from 'react-use-cart';
 
 
 export default function Navigation() {
     const { handleCartClick } = useShoppingCart();
+    const { totalItems } = useCart();
     return ( 
         <section>
             <div>
@@ -31,7 +31,7 @@ export default function Navigation() {
                     <div className="container flex gap-20 mx-auto justify-around">
                     <p className="flex gap-2 items-center text-gray-100 text-xs">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
-                        Free Shipping On All Orders Over $500
+                        Free Shipping On All Orders Over $1500
                     </p>
                     <div className="hidden lg:block">
                         <div className="flex gap-5 items-center">
@@ -82,23 +82,23 @@ export default function Navigation() {
 
                         <div className="flex gap-5 items-center">
                             <div>
-                                <Search/>
+                            <input type="search" id="default-search" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="Search..." required />
                             </div>
-                            <div className="flex divide-x">
-                                <Button
-                                    variant={"outline"}
-                                    onClick={() => handleCartClick()}
-                                    className="flex flex-col gap-y-1.5 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-none bg-pink-500 hover:bg-pink-700">
-                                    <ShoppingBag className="stroke-white"/>
-                                    <span className="hidden text-xs font-semibold text-white sm:block">Cart</span>
-                                </Button>
+                            <div className="flex">
+                            <Button
+                                 onClick={() => handleCartClick()}
+                                className="flex flex-col h-10 w-10 rounded-xl bg-pink-500 hover:bg-pink-700"
+                            >
+                                <ShoppingBag className="stroke-white"/>
+                               
+                            </Button>
                             </div>
                         </div>
                         </div>   
                         </div>
 
 
-                <div className="container w-[500px] place-self-center px-20"> 
+                <div className="container w-[500px] place-self-center px-5"> 
                     <Sheet>
                         <SheetTrigger className="lg:hidden">
                         <Menu className="stroke-pink-600"/>

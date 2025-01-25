@@ -37,7 +37,7 @@ export default function ShoppingCartModal() {
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
       <SheetContent className="sm:max-w-lg w-[90vw] bg-white">
         <SheetHeader>
-          <SheetTitle className="text-black text-lg font-bold pt-10">Shopping Cart</SheetTitle>
+          <SheetTitle className="text-black text-base md:text-lg font-bold pt-10">Shopping Cart</SheetTitle>
         </SheetHeader>
 
         <div className="h-full flex flex-col justify-between">
@@ -60,21 +60,22 @@ export default function ShoppingCartModal() {
 
                       <div className="ml-4 flex flex-1 flex-col">
                         <div>
-                          <div className="flex justify-between text-base font-medium">
+                          <div className="flex justify-between text-sm md:text-base font-medium">
                             <h3>{entry.name}</h3>
                             <p className="ml-4">{entry.price}</p>
+                           
                           </div>
                           
                         </div>
 
-                        <div className="flex flex-1 items-end justify-between text-sm">
+                        <div className="flex flex-1 items-end justify-between text-xs md:text-sm">
                           <p className="text-gray-500">QTY: {entry.quantity}</p>
 
                           <div className="flex">
                             <button
                               type="button"
                               onClick={() => removeItem(entry.id)}
-                              className="font-medium text-primary hover:text-primary/80"
+                              className="font-medium text-red-500 hover:text-red-700"
                             >
                               Remove
                             </button>
@@ -93,13 +94,13 @@ export default function ShoppingCartModal() {
               <p>Subtotal:</p>
               <p>{totalPrice}</p>
             </div>
-            <p className="mt-0.5 text-sm ">
+            <p className="mt-0.5 text-sm">
               Shipping and taxes are calculated at checkout.
             </p>
               <div className="flex gap-5 pb-20">
             <div className="mt-6">
             <Link href="/checkout">
-              <Button onClick={handleCheckoutClick} className="container w-[150px] bg-pink-500 hover:bg-pink-700 text-white">
+              <Button onClick={handleCheckoutClick} className="container md:w-[150px] text-xs md:text-base bg-pink-500 hover:bg-pink-700 text-white">
                 Checkout
               </Button>
               </Link>
@@ -109,7 +110,7 @@ export default function ShoppingCartModal() {
             <Link href="/shop">
              <Button
                   onClick={() => handleCartClick()}
-                  className="container w-[150px] font-medium bg-pink-500 hover:bg-pink-700 text-white"
+                  className="container md:w-[150px] font-medium bg-pink-500 hover:bg-pink-700 text-white text-xs md:text-base"
                 >
                   Continue Shopping
                 </Button>

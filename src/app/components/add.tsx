@@ -54,7 +54,7 @@ export default function Add() {
               >
                
                  <div className="flex gap-5 items-center">
-                 <button className="text-xl px-2 bg-pink-500 text-white hover:bg-transparent hover:text-pink-500 hover:font-bold hover:border-2 rounded-md hover:border-pink-500"
+                 <button className="text-xl px-2 bg-pink-500 text-white hover:bg-transparent hover:text-pink-500 hover:font-bold hover:border-2 rounded-lg hover:border-pink-500"
                   onClick={() => increaseQuantity(product.id)}
                 >
                   +
@@ -62,7 +62,7 @@ export default function Add() {
                 <p className="text-xl">
                 {product.quantity}
                 </p>
-                <button className="text-xl px-2 bg-pink-500 text-white hover:bg-transparent hover:text-pink-500 hover:font-bold hover:border-2 rounded-md hover:border-pink-500"
+                <button className="text-xl px-3 bg-pink-500 text-white hover:bg-transparent hover:text-pink-500 hover:font-bold hover:border-2 rounded-md hover:border-pink-500"
                   onClick={() => decreaseQuantity(product.id)}
                 >
                   -
