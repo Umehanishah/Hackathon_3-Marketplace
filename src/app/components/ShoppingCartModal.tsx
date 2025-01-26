@@ -35,9 +35,9 @@ export default function ShoppingCartModal() {
   }
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
-      <SheetContent className="sm:max-w-lg w-[90vw] bg-white">
+      <SheetContent className="sm:max-w-lg w-[60vw] lg:w-[90vw] bg-white">
         <SheetHeader>
-          <SheetTitle className="text-black text-base md:text-lg font-bold pt-10">Shopping Cart</SheetTitle>
+          <SheetTitle className="text-black text-sm md:text-base lg:text-lg font-bold lg:pt-10">Shopping Cart</SheetTitle>
         </SheetHeader>
 
         <div className="h-full flex flex-col justify-between">
@@ -48,19 +48,20 @@ export default function ShoppingCartModal() {
               ) : (
                 <>
                   {Object.values(cartDetails ?? {}).map((entry) => (
-                    <li key={entry.id} className="flex py-6">
-                      <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                    <li key={entry.id} className="lg:flex py-6">
+                      <div className="h-14 lg:h-24 w-14 lg:w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200 text-xs">
                         <Image
                           src={entry.image as string}
                           alt="Product image"
                           width={100}
                           height={100}
+                          className="container w-[100px] h-[100px] object-cover"
                         />
                       </div>
 
-                      <div className="ml-4 flex flex-1 flex-col">
+                      <div className="lg:ml-4 flex flex-1 flex-col pt-5 md:pt-0">
                         <div>
-                          <div className="flex justify-between text-sm md:text-base font-medium">
+                          <div className="flex justify-between text-xs md:text-base lg:text-lg font-medium">
                             <h3>{entry.name}</h3>
                             <p className="ml-4">{entry.price}</p>
                            
@@ -68,14 +69,14 @@ export default function ShoppingCartModal() {
                           
                         </div>
 
-                        <div className="flex flex-1 items-end justify-between text-xs md:text-sm">
+                        <div className="flex flex-1 items-end justify-between text-xs md:text-sm pt-3 md:pt-0">
                           <p className="text-gray-500">QTY: {entry.quantity}</p>
 
                           <div className="flex">
                             <button
                               type="button"
                               onClick={() => removeItem(entry.id)}
-                              className="font-medium text-red-500 hover:text-red-700"
+                              className="font-medium text-red-500 hover:text-red-700 text-xs md:text-sm"
                             >
                               Remove
                             </button>
@@ -89,28 +90,28 @@ export default function ShoppingCartModal() {
             </ul>
           </div>
 
-          <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-            <div className="flex justify-between text-base font-medium">
+          <div className="border-t border-gray-200 lg:px-4 py-6 sm:px-6">
+            <div className="flex justify-between text-sm md:text-base font-medium">
               <p>Subtotal:</p>
               <p>{totalPrice}</p>
             </div>
-            <p className="mt-0.5 text-sm">
+            <p className="mt-0.5 text-xs md:text-sm">
               Shipping and taxes are calculated at checkout.
             </p>
-              <div className="flex gap-5 pb-20">
-            <div className="mt-6">
+              <div className="lg:flex gap-5 lg:pb-20 place-self-center">
+            <div className="mt-2 lg:mt-6">
             <Link href="/checkout">
-              <Button onClick={handleCheckoutClick} className="container md:w-[150px] text-xs md:text-base bg-pink-500 hover:bg-pink-700 text-white">
+              <Button onClick={handleCheckoutClick} className="container w-[150px] text-xs md:text-base bg-pink-500 hover:bg-pink-700 text-white">
                 Checkout
               </Button>
               </Link>
             </div>
 
-            <div className="mt-6 flex justify-center text-center text-sm">
+            <div className="mt-2 lg:mt-6 flex justify-center text-center text-sm">
             <Link href="/shop">
              <Button
                   onClick={() => handleCartClick()}
-                  className="container md:w-[150px] font-medium bg-pink-500 hover:bg-pink-700 text-white text-xs md:text-base"
+                  className="container w-[150px] text-xs md:text-base font-medium bg-pink-500 hover:bg-pink-700 text-white"
                 >
                   Continue Shopping
                 </Button>

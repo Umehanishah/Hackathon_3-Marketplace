@@ -33,13 +33,13 @@ export default function Navigation() {
                         </div>
 
 
-                <div className="container w-[400px] lg:h-[600px] justify-self-center">
+                <div className="container w-[400px] md:w-[800px] lg:h-[600px] place-self-center justify-self-center">
                   <Image
                     src="/img-1.png"
                     alt="Header-Image"
                     width={400}
                     height={400}
-                    className="px-20 md:px-0"
+                    className="px-20 md:px-0 place-self-center"
                   />
                 </div>
 
