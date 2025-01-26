@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { ShoppingBag } from 'lucide-react';
 import { useShoppingCart } from 'use-shopping-cart';
 import { useCart } from 'react-use-cart';
+import SearchBar from '../components/searchbar';
 
 
 export default function Navigation() {
@@ -75,9 +76,10 @@ export default function Navigation() {
                         </ul>
 
                         <div className="flex gap-5 items-center">
-                            <div>
-                            <input type="search" id="default-search" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="Search..." required />
-                            </div>
+                        <div>
+                            {/* Place your other navigation links here */}
+                            <SearchBar />
+                        </div>
                             <div className="flex">
                             <Button
                                  onClick={() => handleCartClick()}
