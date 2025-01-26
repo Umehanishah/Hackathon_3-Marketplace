@@ -37,7 +37,7 @@ export default function About() {
        
        <div className="container w-[300px] md:w-[700px] lg:w-[1000px]  place-self-center md:pb-10">
         <h1 className="text-xl font-bold py-5">
-          Silver Linings of this Product</h1>
+          The Silver Linings of this Product</h1>
         <p className="text-xs md:text-base text-justify text-gray-900 font-justify py-4 leading-8">
         Welcome to S.k blissful bites, a dessert oriented circle for those who love desserts and eat to love. 
         Our country is a fresh vessel of flavours. Our company believe that that food goes further than any 
