@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams } from "next/navigation"; // Hook to access query parameters
 import { useState } from "react";
 import Image from "next/image";
@@ -107,7 +108,7 @@ export default function CheckoutPage() {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-
+    
       <div className="container w-[300px] md:w-[700px] lg:w-[1000px] place-self-center">
         <h1 className="text-xl md:text-2xl font-bold">Finalize Your Order</h1>
         

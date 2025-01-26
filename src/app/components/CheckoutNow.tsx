@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from 'react';
 import { Button } from "@/components/ui/button";
 import { urlFor } from "@/lib/sanity";
 import { ProductCart } from "./AddToBag";
