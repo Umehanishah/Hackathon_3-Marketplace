@@ -19,6 +19,19 @@ export default {
         Rule.required().email().error("A valid email address is required"),
     },
     {
+      name: "date",
+      title: "Date",
+      type: "date",
+      options: {
+        dateFormat: "YYYY-MM-DD",
+      },
+    },
+    {
+      name: "time",
+      title: "Time",
+      type: "string",
+    },
+    {
       name: "message",
       title: "Message",
       type: "text",

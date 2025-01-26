@@ -10,6 +10,10 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useShoppingCart } from "use-shopping-cart";
+import CheckoutNow from "./CheckoutNow";
+import { useRouter } from "next/navigation"; // To navigate to the checkout page
+
+
 
 export default function ShoppingCartModal() {
   const {
@@ -19,20 +23,31 @@ export default function ShoppingCartModal() {
     cartDetails,
     removeItem,
     totalPrice,
-    redirectToCheckout,
+    incrementItem,
+    decrementItem,
+    formattedTotalPrice,
   } = useShoppingCart();
 
-  async function handleCheckoutClick(event: any) {
-    event.preventDefault();
-    try {
-      const result = await redirectToCheckout();
-      if (result?.error) {
-        console.log("result");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const router = useRouter();
+
+  const handleCheckoutClick = () => {
+    // Prepare cart data to be sent to checkout page
+    const cartData = Object.values(cartDetails ?? {}).map(entry => ({
+      id: entry.id,
+      name: entry.name,
+      price: entry.price,
+      quantity: entry.quantity,
+      image: entry.image,
+      description: entry.description,
+    }));
+
+    // Redirect to checkout page with cart data as a query parameter
+    const query = new URLSearchParams();
+    query.set("cart", encodeURIComponent(JSON.stringify(cartData))); // Pass cart data as query parameter
+    router.push(`/checkout?${query.toString()}`); // Redirect to checkout
+  };
+
+
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
       <SheetContent className="sm:max-w-lg w-[60vw] lg:w-[90vw] bg-white">
@@ -63,14 +78,30 @@ export default function ShoppingCartModal() {
                         <div>
                           <div className="flex justify-between text-xs md:text-base lg:text-lg font-medium">
                             <h3>{entry.name}</h3>
-                            <p className="ml-4">{entry.price}</p>
+                            <p className="ml-4">
+                              {(entry.price * entry.quantity).toFixed(2)}
+                            </p>
                            
                           </div>
                           
                         </div>
 
                         <div className="flex flex-1 items-end justify-between text-xs md:text-sm pt-3 md:pt-0">
-                          <p className="text-gray-500">QTY: {entry.quantity}</p>
+                        <div className="flex items-center gap-2">
+                            <Button
+                              onClick={() => decrementItem(entry.id)}
+                              className="text-base text-white bg-pink-500 px-2 py-1 hover:bg-pink-600 rounded-xl"
+                            >
+                              -
+                            </Button>
+                          <p className="text-black text-base">{entry.quantity}</p>
+                          <Button
+                              onClick={() => incrementItem(entry.id)}
+                              className="text-base text-white bg-pink-500 px-2 py-1 hover:bg-pink-600 rounded-xl"
+                            >
+                              +
+                            </Button>
+                            </div>
 
                           <div className="flex">
                             <button
@@ -100,12 +131,13 @@ export default function ShoppingCartModal() {
             </p>
               <div className="lg:flex gap-5 lg:pb-20 place-self-center">
             <div className="mt-2 lg:mt-6">
-            <Link href="/checkout">
-              <Button onClick={handleCheckoutClick} className="container w-[150px] text-xs md:text-base bg-pink-500 hover:bg-pink-700 text-white">
-                Checkout
-              </Button>
-              </Link>
-            </div>
+            <Button
+                  onClick={handleCheckoutClick} // Handle checkout click
+                  className="container w-[150px] text-xs md:text-base font-medium bg-pink-500 hover:bg-pink-700 text-white"
+                >
+                  Checkout
+                </Button>
+                </div>
 
             <div className="mt-2 lg:mt-6 flex justify-center text-center text-sm">
             <Link href="/shop">

@@ -6,6 +6,8 @@ export interface comment {
     name: string;
     email: string;
     message: string;
+    time: number;
+    date: number;
      }
   
 
@@ -14,6 +16,8 @@ export default async function Data() {
     `*[_type == "contactForm"]{
   name,
   email,
+  date,
+  time,
   message
 }`
   );
@@ -33,14 +37,17 @@ export default async function Data() {
             Comments & Questions of our Customers</h1>
           <div>
             {comments.map((comment, index) => (
-          <div key={comment.name} className="items-center px-2 py-2">
-            <h1 className="text-xs md:text-base font-bold pt-4 text-black">
+          <div key={comment.name} className="items-center px-2 py-4">
+            <h1 className="text-xs md:text-base font-bold text-black">
                 {comment.name}
               </h1>
-              
-                <p className="text-xs md:text-base font-light pt-2 text-black">
+              <p className="text-xs font-light py-4 text-black">
+                {comment.date}, {comment.time}
+                </p>
+                <p className="text-xs md:text-base font-light pt-2 pb-5 text-black">
                 {comment.message}
                 </p>
+                <hr/>
            </div>
             ))}
         </div>
