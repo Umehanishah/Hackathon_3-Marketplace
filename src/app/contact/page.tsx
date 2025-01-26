@@ -18,7 +18,7 @@ export default function Contact() {
     <main>
       <Navigation />
 
-      <div className="container w-[500px] md:w-[700px] lg:w-[1000px] place-self-center pt-10">
+      <div className="container w-[300px] md:w-[700px] lg:w-[1000px] place-self-center pt-10">
       <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
@@ -36,15 +36,15 @@ export default function Contact() {
 
       {/* Contact Section */}
       <section className="py-10 place-self-center">
-        <div className="container  w-[500px] md:w-[700px] lg:w-[800px] place-self-center text-center">
+        <div className="container  w-[300px] md:w-[700px] lg:w-[800px] place-self-center text-center">
           <h1 className="text-xl md:text-3xl font-bold">Get In Touch With Us</h1>
-          <p className="text-gray-500 text-xs md:text-sm mt-3 px-10">
+          <p className="text-gray-500 text-xs md:text-sm mt-3 md:px-10">
             For more information about our products & services, please feel free to drop us an email. 
             Our staff is always here to help you out. Do not hesitate!
           </p>
         </div>
 
-        <div className="container w-[500px] lg:w-[1000px] mt-10 grid grid-cols-1 lg:grid-cols-2">
+        <div className="container w-[300px] md:w-[700px] lg:w-[1000px] mt-10 grid grid-cols-1 lg:grid-cols-2">
           {/* Contact Information */}
           <div className="container w-[500px] px-10 md:px-0 space-y-8">
             
@@ -82,7 +82,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="container w-[500px] px-10 md:px-0 pt-10 lg:pt-0 place-self-center">
+          <div className="container w-[300px] md:w-[700px] px-10 md:px-0 pt-10 lg:pt-0 place-self-center">
             <form className="space-y-4">
               <p className="text-xs">Your Name</p>
               <Input placeholder="Abc" className="bg-pink-50 text-gray-500" />
@@ -100,7 +100,7 @@ export default function Contact() {
 
       {/* Features Section */}
       <section className="place-self-center pb-10 mt-20">
-  <div className="container w-[600px] md:w-[1100px] grid grid-cols-1 sm:grid-cols-3 gap-6 bg-pink-100 py-10 text-center">
+  <div className="container w-[300px] md:w-[700px] lg:w-[1000px] grid grid-cols-1 sm:grid-cols-3 gap-6 bg-pink-100 py-10 text-center">
     {/* High Quality */}
     <div className="flex flex-col items-center">
       <svg xmlns="http://www.w3.org/2000/svg" width="40"height="40"viewBox="0 0 24 24"fill="none"stroke="currentColor"strokeWidth="2"strokeLinecap="round"strokeLinejoin="round"className="mb-3 text-pink-500"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /><path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" /><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" /><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></svg>

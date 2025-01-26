@@ -20,7 +20,7 @@ export default function  shop() {
     <div>
         <Navigation/>
         
-        <div className="container w-[500px] lg:w-[1000px] place-self-center py-10 text-lg">
+        <div className="container w-[300px] md:w-[700px] lg:w-[1000px] place-self-center py-10 text-lg">
         <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>

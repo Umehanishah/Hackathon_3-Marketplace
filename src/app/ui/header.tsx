@@ -11,14 +11,14 @@ export default function Navigation() {
 
 
     return ( 
-        <section className="w-[500px] md:w-[700px] lg:w-[1000px] lg:h-[700px] place-self-center">
+        <section className="w-[400px] md:w-[700px] lg:w-[1000px] lg:h-[700px] place-self-center">
            <div>
              
              
                 {/* header */}
-                <div className="container md:w-[700px] lg:w-[1000px] lg:flex gap-10 bg-pink-100 rounded-b-3xl place-self-center items-center lg:px-10 py-5">
+                <div className="container w-[400px] md:w-[700px] lg:w-[1000px] lg:flex gap-10 bg-pink-50 rounded-b-3xl place-self-center items-center lg:px-10 py-5">
                   
-                    <div className="container w-[500px] lg:h-[600px] place-self-center lg:place-self-auto pt-10 lg:pt-40 text-center lg:text-left px-5 lg:px-0">
+                    <div className="container w-[400px] md:w-[700px] lg:w-[1000px] lg:h-[600px] place-self-center lg:place-self-auto pt-10 lg:pt-40 text-center lg:text-left px-5 lg:px-0">
                     <p className="text-gray-600 rounded-md text-xs font-light px-5 md:px-0">
                     WELCOME TO SUGARFY!
                     </p>

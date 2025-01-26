@@ -53,7 +53,7 @@ const ContactForm = () => {
     }
 
     return (
-        <div className="container w-[500px] md:w-[700px] lg:w-[1000px] place-self-center py-10">
+        <div className="container w-[300px] md:w-[700px] lg:w-[1000px] place-self-center py-10">
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                     <FormField

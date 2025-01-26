@@ -18,6 +18,8 @@ export default function LoginPage() {
         <>
      <Navigation />
 
+
+      <div className="container w-[300px] md:w-[700px] lg:w-[1000px] place-self-center py-10 text-lg">
      <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
@@ -25,17 +27,19 @@ export default function LoginPage() {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/about">About</BreadcrumbLink>
+          <BreadcrumbLink href="/about">Login</BreadcrumbLink>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
+    </div>
+
 
     <div className="containerw-[400px] md:w-[700px] lg:w-[1000px] gap-10 place-self-center flex items-center py-10">
     <SignIn
         routing="path"
         path="/login"
-        afterSignInUrl="/checkout" // Redirect to checkout after login
-        afterSignUpUrl="/checkout" // Redirect to checkout after sign-up
+        afterSignInUrl="/" // Redirect to checkout after login
+        afterSignUpUrl="/" // Redirect to checkout after sign-up
       />
        <Image src="/img-4.jpg" alt="img" width={450} height={300} className="hidden lg:block rounded"/>
     </div>

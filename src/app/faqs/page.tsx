@@ -20,7 +20,7 @@ const Faqs = () => {
    <Navigation/>
    <div>
 
-   <div className="container  w-[500px] md:w-[700px] lg:w-[1000px] place-self-center py-10 text-lg">
+   <div className="container  w-[300px] md:w-[700px] lg:w-[1000px] place-self-center py-10 text-lg">
    <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
@@ -36,8 +36,8 @@ const Faqs = () => {
         </div>
      
 
-        <div className="container  w-[500px] md:w-[700px] lg:w-[1000px] place-self-center py-5">
-        <h1 className="text-2xl font-bold">
+        <div className="container  w-[300px] md:w-[700px] lg:w-[1000px] place-self-center py-5">
+        <h1 className="text-xl md:text-2xl font-bold">
         Comment here or Ask any Question</h1>
      <ContactForm/>
      <hr/>

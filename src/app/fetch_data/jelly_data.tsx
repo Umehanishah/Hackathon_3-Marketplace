@@ -49,7 +49,7 @@ export default async function Data() {
  
 
   return (
-    <div className="container mx-auto lg:w-[1000px] pt-20">
+    <div className="container mx-auto w-[400px] md:w-[700px] lg:w-[1000px] pt-20">
       <hr/>
            <h1 className="text-xl md:text-2xl text-center font-bold py-10">Our Heavenly Jello Jelly Collection</h1>
   <div className="hidden lg:grid grid-cols-3 gap-5 gap-y-10">
@@ -95,7 +95,7 @@ export default async function Data() {
 
   {/* Mobile Scroll Area */}
   <div className="block lg:hidden px-10">
-    <ScrollArea className="container w-[400px] md:w-[700px] place-self-center whitespace-nowrap rounded-md">
+    <ScrollArea className="container w-[300px] md:w-[700px] lg:w-[1000px] place-self-center whitespace-nowrap rounded-md">
       <div className="flex w-max space-x-4 p-4">
         {jelly.map((jelly) => (
           <figure key={jelly.slug} className="shrink-0">
@@ -105,7 +105,7 @@ export default async function Data() {
               <Image
                 src={urlFor(jelly.image).url()}
                 alt={jelly.name} width={400} height={400}
-                className="aspect-[1/2] h-80 w-60 object-cover"
+                className="aspect-[1/2] h-60 w-60 object-cover"
               />
             </div>
             <figcaption className="flex justify-between px-2 pt-2 text-base text-black">

@@ -1,21 +1,15 @@
 "use client";
 
 
-import Link from "next/link";
-import Image from "next/image";
-import {
-    Sheet,
-    SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-  } from "@/components/ui/sheet"
-  import {Menu} from "lucide-react";
-import Login_button from "./login_button";
-import { Button } from "@/components/ui/button";
-import { ShoppingBag } from "lucide-react";
-import { useShoppingCart } from "use-shopping-cart";
+import Link from 'next/link';
+import Image from 'next/image';
+import { useState } from 'react';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Menu } from 'lucide-react';
+import Login_button from './login_button';
+import { Button } from '@/components/ui/button';
+import { ShoppingBag } from 'lucide-react';
+import { useShoppingCart } from 'use-shopping-cart';
 import { useCart } from 'react-use-cart';
 
 

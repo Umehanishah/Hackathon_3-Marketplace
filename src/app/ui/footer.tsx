@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button";
 export default function Footer() {
     return ( 
         <section>
-            <div className="container w-[400px] lg:w-[1000px] lg:h-[300px] place-self-center pt-20">
+            <div className="container w-[300px] md:w-[700px] lg:w-[1000px] lg:h-[300px] place-self-center pt-20">
                 <hr/>
-                    <div className="continer w-[400px] md:w-[600px] lg:w-[1000px] lg:h-[300px] place-self-center items-center pt-20">
+                    <div className="continer w-[300px] md:w-[700px] lg:w-[1000px] lg:h-[300px] place-self-center items-center pt-20">
                     
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 place-self-center">
-                        <div className="continer w-[400px]">
+                        <div className="continer w-[300px] place-self-center">
                             <Image src="/logo.png" alt="logo" width={150} height={50}/>
                             <p className="continer w-[300px] text-xs text-gray-400 pt-5">
                             Indulge in every bite—sweet moments are meant to be savored!</p>
@@ -28,7 +28,7 @@ export default function Footer() {
                                 </div>
                                 </div>
 
-                                <div className="continer w-[400px] grid grid-cols-2 pt-10">
+                                <div className="continer w-[300px] md:w-[400px] grid grid-cols-2 pt-10">
                                     <ul>
                                         <h2 className="text-xs text-gray-500 pb-2">CATEGORY</h2>
                                         <li className="text-xs text-gray-800 pt-3 hover:text-pink-500">
@@ -50,7 +50,7 @@ export default function Footer() {
                                     </ul>
                                 </div>
 
-                                <div className="continer w-[350px] pt-10 lg:pt-0">
+                                <div className="continer w-[300px] pt-10 lg:pt-0">
                                 <h2 className="text-xs text-gray-500 pb-2">NEWSLETTER</h2>
                                 <div className="flex gap-3">
                                 <Input type="email" placeholder="Email" className="mt-3 text-xs"/>
