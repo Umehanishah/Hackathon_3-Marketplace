@@ -44,12 +44,12 @@ export default function OrderConfirmationPage() {
       <Navigation />
 
       <div className="container w-[300px] md:w-[700px] lg:w-[1000px] place-self-center py-10">
-        <h1 className="text-xl md:text-2xl font-bold text-center mb-6">Order Confirmation</h1>
+        <h1 className="text-base lg:text-xl md:text-2xl font-bold text-center mb-6">Order Confirmation</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Left column: Order details */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Order Details</h3>
+            <h3 className="text-xs md:text-base lg:text-lg font-semibold mb-4">Order Details</h3>
             {orderDetails && orderDetails.length > 0 ? (
               <div className="space-y-4">
                 {orderDetails.map((product: any) => (
@@ -58,44 +58,44 @@ export default function OrderConfirmationPage() {
                     className="flex justify-between"
                   >
                     <div>
-                      <p className="font-medium">{product.name}</p>
-                      <p>
+                      <p className="text-sm md:text-base font-medium">{product.name}</p>
+                      <p className="text-sm md:text-base ">
                         Qty: {product.quantity} × {product.currency}{" "}
                         {product.price}
                       </p>
                     </div>
-                    <p className="font-medium">
+                    <p className="text-sm md:text-base font-medium">
                       {product.currency} {product.price * product.quantity}
                     </p>
                   </div>
                 ))}
-                <div className="font-bold">
+                <div className="text-sm md:text-base font-bold">
                   Total Amount: {orderDetails[0]?.currency} {calculateTotalAmount()}
                 </div>
               </div>
             ) : (
-              <p>No products in the cart.</p>
+              <p className="text-sm md:text-base ">No products in the cart.</p>
             )}
          
-            <h3 className="text-lg font-semibold mb-4">Customer Details</h3>
+            <h3 className="text-sm md:text-base lg:text-lg font-semibold mb-4">Customer Details</h3>
             {customerDetails ? (
               <div className="space-y-2">
-                <p>Name: {customerDetails.name}</p>
-                <p>Email: {customerDetails.email}</p>
-                <p>Phone: {customerDetails.phone}</p>
-                <p>Address: {customerDetails.address}</p>
+                <p className="text-sm md:text-base">Name: {customerDetails.name}</p>
+                <p className="text-sm md:text-base ">Email: {customerDetails.email}</p>
+                <p className="text-sm md:text-base ">Phone: {customerDetails.phone}</p>
+                <p className="text-sm md:text-base ">Address: {customerDetails.address}</p>
               </div>
             ) : (
-              <p>No customer details available.</p>
+              <p className="text-sm md:text-base ">No customer details available.</p>
             )}
           </div>
        
 
         {/* Payment Status */}
         <div className="mt-6">
-          <h3 className="text-lg font-semibold mb-2">Payment Status</h3>
-          <p>Status: {paymentStatus}</p>
-          <p>Date and Time: {new Date(paymentDateTime).toLocaleString()}</p>
+          <h3 className="text-sm md:text-base lg:text-lg font-semibold mb-2">Payment Status</h3>
+          <p className="text-sm md:text-base ">Status: {paymentStatus}</p>
+          <p className="text-sm md:text-base ">Date and Time: {new Date(paymentDateTime).toLocaleString()}</p>
         </div>
         </div>
         {/* Thank you note */}
@@ -103,10 +103,10 @@ export default function OrderConfirmationPage() {
           <p className="text-xl font-semibold text-green-600">
             Thank you for your order! 🎉
           </p>
-          <p className="mt-2">
+          <p className="text-sm md:text-base mt-2">
             Your order has been successfully placed and is being processed.
           </p>
-          <Button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white">
+          <Button className="text-sm md:text-base mt-4 bg-pink-500 hover:bg-pink-600 text-white">
             Return to Home
           </Button>
         </div>

@@ -116,7 +116,7 @@ export default function JazzCashPaymentPage() {
 
       <div className="container w-[300px] md:w-[700px] lg:w-[1000px] place-self-center">
         <div className="container w-full py-10">
-          <h1 className="text-xl md:text-2xl font-bold text-center mb-6">
+          <h1 className="text-base md:text-xl lg:text-2xl font-bold text-center mb-6">
             JazzCash Payment
           </h1>
 
@@ -124,7 +124,7 @@ export default function JazzCashPaymentPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Left column: Payment form */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Payment Details</h3>
+              <h3 className="text-base md:text-lg font-semibold mb-4">Payment Details</h3>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -133,12 +133,12 @@ export default function JazzCashPaymentPage() {
                 className="space-y-4"
               >
                 <div>
-                  <label className="block text-lg font-medium">Phone Number</label>
+                  <label className="block text-base md:text-lg font-medium">Phone Number</label>
                   <input
                     type="text"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="w-full p-2 border rounded-md mt-2"
+                    className="w-full p-2 border rounded-md mt-2 text-xs md:text-base"
                     placeholder="Enter your JazzCash phone number"
                     required
                   />
@@ -147,7 +147,7 @@ export default function JazzCashPaymentPage() {
                 <Button
                   type="submit"
                   disabled={loading || !phoneNumber}
-                  className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded mt-4"
+                  className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded mt-4 text-sm md:text-base"
                 >
                   {loading ? "Processing..." : "Submit Payment"}
                 </Button>
@@ -156,40 +156,41 @@ export default function JazzCashPaymentPage() {
 
             {/* Right column: Order and customer details */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Order Details</h3>
+              <h3 className="text-base md:text-lg font-semibold mb-4">Order Details</h3>
               {cartData && cartData.length > 0 ? (
                 <div className="space-y-4">
                   {cartData.map((product: any) => (
                     <div key={product.id} className="flex justify-between">
                       <div>
-                        <p className="font-medium">{product.name}</p>
-                        <p>
+                        <p className="text-xs md:text-base font-medium">{product.name}</p>
+                        <p className="text-xs md:text-base">
                           Qty: {product.quantity} × {product.currency} {product.price}
                         </p>
                       </div>
-                      <p className="font-medium">
+                      <p className="font-medium text-xs md:text-base">
                         {product.currency} {product.price * product.quantity}
                       </p>
                     </div>
                   ))}
-                  <div className="font-bold">
+                  <div className="font-bold text-xs md:text-base ">
                     Total Amount: {cartData[0]?.currency} {calculateTotalAmount()}
                   </div>
                 </div>
               ) : (
-                <p>No products in the cart.</p>
+                <p className="text-xs md:text-base">No products in the cart.</p>
               )}
 
-              <h3 className="text-lg font-semibold mt-6">Customer Details</h3>
+              <h3 className="text-xs md:text-base lg:text-lg font-semibold mt-6">Customer Details</h3>
               {customerData ? (
                 <div className="space-y-2">
-                  <p>Name: {customerData.name}</p>
-                  <p>Email: {customerData.email}</p>
-                  <p>Phone: {customerData.phone}</p>
-                  <p>Address: {customerData.address}</p>
+                  <p className="text-xs md:text-base">Name: {customerData.name}</p>
+                  <p className="text-xs md:text-base">Email: {customerData.email}</p>
+                  <p className="text-xs md:text-base">Phone: {customerData.phone}</p>
+                  <p className="text-xs md:text-base">Address: {customerData.address}</p>
                 </div>
               ) : (
-                <p>No customer details available.</p>
+                <p className="text-xs md:text-base">
+                  No customer details available.</p>
               )}
             </div>
           </div>

@@ -68,15 +68,17 @@ export default function CheckoutPage() {
       if (cartData && cartData.length > 0) {
         // Serialize the cart data to pass in the URL query parameter
         const serializedCartData = encodeURIComponent(JSON.stringify(cartData));
+        const serializedCustomerData = encodeURIComponent(JSON.stringify(customerData));
+
 
         // Navigate to the respective payment method page
-        if (paymentMethod === "JazzCash") {
-          router.push(`/payment/jazzcash?cart=${serializedCartData}`);
-        } else if (paymentMethod === "EasyPaisa") {
-          router.push(`/payment/easypaisa?cart=${serializedCartData}`);
-        } else if (paymentMethod === "Bank Account") {
-          router.push(`/payment/bankaccount?cart=${serializedCartData}`);
-        }
+         if (paymentMethod === "JazzCash") {
+        router.push(`/payment/jazzcash?cart=${serializedCartData}&customer=${serializedCustomerData}`);
+      } else if (paymentMethod === "EasyPaisa") {
+        router.push(`/payment/easypaisa?cart=${serializedCartData}&customer=${serializedCustomerData}`);
+      } else if (paymentMethod === "Bank Account") {
+        router.push(`/payment/bankaccount?cart=${serializedCartData}&customer=${serializedCustomerData}`);
+      }
       }
     } catch (error) {
       console.error("Error processing payment:", error);
@@ -110,32 +112,32 @@ export default function CheckoutPage() {
       </div>
     
       <div className="container w-[300px] md:w-[700px] lg:w-[1000px] place-self-center">
-        <h1 className="text-xl md:text-2xl font-bold">Finalize Your Order</h1>
+        <h1 className="text-lg md:text-xl lg:text-2xl font-bold pb-5 md:pb-0">Finalize Your Order</h1>
         
-        <div className="flex gap-10">
-        <div className="container w-[450px] place-self-center">
+        <div className="container w-[300px] md:w-[700px] lg:w-[1000px] md:flex gap-10">
+        <div className="container w-[300px] md:w-[450px] place-self-center">
         {/* Display product information if available */}
         {cartData && cartData.length > 0 ? (
           <div>
-             <h2 className="text-lg font-bold pt-10">Order Details</h2>
+             <h2 className="text-base lg:text-lg font-semibold lg:font-bold">Order Details</h2>
             {cartData.map((product: any) => (
               <div key={product.id} className="flex gap-5 justify-between border my-2 px-5">
                 {/* Product Image */}
-                {/* <Image
+                <Image
                   src={product.image}
                   alt={product.name}
                   width={100}
                   height={100}
-                  className="rounded-md"
-                /> */}
+                  className="rounded-md text-xs"
+                />
                 {/* Product Name */}
-                <h2 className="text-base md:text-lg items-center pt-4 font-semibold">
+                <h2 className="text-xs md:text-base lg:text-lg items-center pt-4 font-semibold">
                   {product.name}</h2>
-                <p className="text-sm md:text-base pt-4 pb-4">
+                <p className="text-xs md:text-base pt-4 pb-4">
                 <span className="font-semibold">  Qty:</span><br/> {product.quantity}
                 </p>
                 {/* Total for each product */}
-                <p className="text-sm md:text-base pt-4">
+                <p className="text-xs md:text-base pt-4">
                  <span className="font-semibold"> Total:</span><br/> {product.currency} {product.price * product.quantity}
                 </p>
               </div>
@@ -145,24 +147,20 @@ export default function CheckoutPage() {
           <p>No products in the cart.</p>
         )}
 
-        {/* Display the total amount */}
-        <div className="mt-4 font-semibold">
-          <h3>Total Amount: {cartData ? cartData[0]?.currency : "$"} {calculateTotalAmount()}</h3>
-        </div>
         </div>
 
-        <div className="container w-[450px] place-self-center">
+        <div className="container w-[300px] md:w-[450px] place-self-center">
         {/* Customer details form */}
         <div className="mt-6">
-          <h2 className="text-lg font-bold">Customer Information</h2>
-          <div className="grid gap-4 mt-4">
+          <h2 className="text-base md:text-lg font-bold">Customer Information</h2>
+          <div className="grid gap-4 mt-5 mb-10">
             <input
               type="text"
               name="name"
               placeholder="Full Name"
               value={customerData.name}
               onChange={handleInputChange}
-              className="border rounded-md px-3 py-2 w-full"
+              className="border rounded-md px-3 py-2 w-full text-xs md:text-base"
             />
             <input
               type="email"
@@ -170,7 +168,7 @@ export default function CheckoutPage() {
               placeholder="Email"
               value={customerData.email}
               onChange={handleInputChange}
-              className="border rounded-md px-3 py-2 w-full"
+              className="border rounded-md px-3 py-2 w-full text-xs md:text-base"
             />
             <input
               type="tel"
@@ -178,7 +176,7 @@ export default function CheckoutPage() {
               placeholder="Phone Number"
               value={customerData.phone}
               onChange={handleInputChange}
-              className="border rounded-md px-3 py-2 w-full"
+              className="border rounded-md px-3 py-2 w-full text-xs md:text-base"
             />
             <input
               type="text"
@@ -186,18 +184,39 @@ export default function CheckoutPage() {
               placeholder="Shipping Address"
               value={customerData.address}
               onChange={handleInputChange}
-              className="border rounded-md px-3 py-2 w-full"
+              className="border rounded-md px-3 py-2 w-full text-xs md:text-base"
             />
           </div>
         </div>
         </div>
         
         </div>
+          
 
+          <hr/>
+
+          <div className='lg:flex justify-between mt-5'>
+        {/* Display the total amount */}
+        <div className="container w-[300px] lg:w-[450px] place-self-center mt-4 font-semibold bg-pink-200 p-5">
+        {/* Total Amount */}
+        <h3 className='pt-5 text-xs md:text-base lg:text-lg'>
+          Total Amount: {cartData ? cartData[0]?.currency : "$"} {calculateTotalAmount()}
+        </h3>
+
+        {/* Delivery Charges */}
+        <h3 className='py-3 text-xs md:text-base lg:text-lg'>
+          Delivery Charges: {cartData ? cartData[0]?.currency : "$"} 100
+        </h3>
+          <hr/>
+        {/* Grand Total */}
+        <h3 className='pt-5 text-xs md:text-base lg:text-lg'>
+          Grand Total: {cartData ? cartData[0]?.currency : "$"} {calculateTotalAmount() + 100}
+        </h3>
+      </div>
 
 
         {/* Radio group for payment method selection */}
-        <div className="grid grid-rows-3 gap-3 mt-5">
+        <div className="container w-[300px] md:w-[450px] place-self-center grid grid-rows-3 gap-3 mt-5">
           
           <label className="inline-flex items-center">
             <input
@@ -206,9 +225,9 @@ export default function CheckoutPage() {
               value="JazzCash"
               checked={paymentMethod === "JazzCash"}
               onChange={(e) => setPaymentMethod(e.target.value)}
-              className="form-radio text-blue-500"
+              className="form-radio text-blue-500 text-xs md:text-base"
             />
-            <span className="ml-2 text-lg">Pay with JazzCash</span>
+            <span className="ml-2 text-xs md:text-base lg:text-lg">Pay with JazzCash</span>
           </label>
 
           <label className="inline-flex items-center">
@@ -220,7 +239,7 @@ export default function CheckoutPage() {
               onChange={(e) => setPaymentMethod(e.target.value)}
               className="form-radio text-pink-500"
             />
-            <span className="ml-2 text-lg">Pay with EasyPaisa</span>
+            <span className="ml-2 text-xs md:text-base lg:text-lg">Pay with EasyPaisa</span>
           </label>
 
           <label className="inline-flex items-center">
@@ -232,20 +251,21 @@ export default function CheckoutPage() {
               onChange={(e) => setPaymentMethod(e.target.value)}
               className="form-radio text-gray-500"
             />
-            <span className="ml-2 text-lg">Pay via Bank Account</span>
+            <span className="ml-2 text-xs md:text-base lg:text-lg">Pay via Bank Account</span>
           </label>
-        </div>
+        
 
         {/* Payment Button */}
         <Button
           onClick={handlePayment}
           disabled={loading || !paymentMethod}
-          className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded mt-4"
+          className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded mt-4 text-xs md:text-base"
         >
           {loading ? "Processing..." : "Proceed to Pay"}
         </Button>
       </div>
-
+      </div>
+      </div>
       <Footer />
     </>
   );
