@@ -12,11 +12,17 @@ import { ShoppingBag } from 'lucide-react';
 import { useShoppingCart } from 'use-shopping-cart';
 import { useCart } from 'react-use-cart';
 import SearchBar from '../components/searchbar';
+import { useWishlist } from "@/app/context/wishlistcontext";
+import { Heart } from "lucide-react";
+
 
 
 export default function Navigation() {
     const { handleCartClick } = useShoppingCart();
     const { totalItems } = useCart();
+    const { wishlist } = useWishlist();
+
+
     return ( 
         <section>
             <div>
@@ -79,6 +85,20 @@ export default function Navigation() {
                         <div>
                             {/* Place your other navigation links here */}
                             <SearchBar />
+                        </div>
+                        <div>
+                        <Link href="/wishlist" className="relative">
+                            {wishlist.length > 0 ? (
+                                <Heart className="text-red-500 fill-red-500 w-7 h-7" />
+                            ) : (
+                                <Heart className="text-black w-7 h-7" />
+                            )}
+                            {wishlist.length > 0 && (
+                                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-sm px-2 rounded-full">
+                                {wishlist.length}
+                                </span>
+                            )}
+                            </Link>
                         </div>
                             <div className="flex">
                             <Button

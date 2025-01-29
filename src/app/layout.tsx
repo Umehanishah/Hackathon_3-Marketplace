@@ -4,6 +4,7 @@ import "./globals.css";
 import {ClerkProvider } from "@clerk/nextjs";
 import CartProvider from "./components/Providers";
 import ShoppingCartModal from "./components/ShoppingCartModal";
+import { WishlistProvider } from "./context/wishlistcontext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,8 +34,9 @@ export default function RootLayout({
       >
         <CartProvider>
           <ShoppingCartModal />
-      
+          <WishlistProvider>
         {children}
+        </WishlistProvider>
         </CartProvider>
       </body>
     </html>

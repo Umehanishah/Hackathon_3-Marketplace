@@ -24,6 +24,10 @@ import { PageProps } from '../../../../../.next/types/app/slug/jelly/[slug]/page
 import Pudding_data from '@/app/fetch_data/pudding_data';
 import BagButton from '@/app/components/BagButton';
 import Jrecipe from '@/app/fetch_data/jrecipe'; 
+import WishlistButton from "@/app/components/wishlistbutton";
+
+
+
 
 interface Params {
   params: {
@@ -62,8 +66,6 @@ const jelly = async (params:PageProps) => {
 ) 
 
 
-  
-
 
   return (
     <main>
@@ -88,13 +90,14 @@ const jelly = async (params:PageProps) => {
 
       <div className="container w-[300px] md:w-[700px] lg:w-[1000px] place-self-center lg:grid grid-cols-2 gap-10">
       <div className="container w-[300px] md:w-[700px] lg:w-[500px] md:h-[600px] place-self-center bg-cover">
+     
         <Image src={urlFor(jelly.image).url()} alt={ jelly.name } width={500} height={700} className='container w-[400px] h-[400px] md:w-full md:h-full place-self-center'/>
       </div>
       <div className='container w-[300px] md:w-[700px] lg:w-[500px] place-self-center pt-5'>
         <h2 className='text-xl lg:text-4xl font-bold pt-10 md:pt-0'>
           {jelly.name}
           </h2>
-        
+          
         <h3 className='container w-[100px] md:w-[150px] mt-5 mb-5 bg-pink-500 rounded-full text-center text-white text-xs md:text-base lg:text-lg font-semibold py-2'>
           Rs. {jelly.price} 
           <span className='text-sm md:text-base lg:text-lg text-gray-100 line-through pl-5'>150</span>
@@ -110,7 +113,9 @@ const jelly = async (params:PageProps) => {
           
 
         <div className="flex gap-5 pt-5">
-             
+            <div>
+             <WishlistButton productId={jelly._id} /> 
+             </div>
              <BagButton
               currency="PKR"
               description={jelly.description}
@@ -118,15 +123,7 @@ const jelly = async (params:PageProps) => {
               name={jelly.name}
               price={jelly.price} price_id={''}                /> 
             
-              <Link href="/checkout">
-              <CheckoutNow
-              currency="PKR"
-              description={jelly.description}
-              image={jelly.image}
-              name={jelly.name}
-              price={jelly.price} price_id={''}              
-              />
-              </Link>
+            
             </div> 
 
 

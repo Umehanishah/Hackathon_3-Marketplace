@@ -5,6 +5,7 @@ import ContactForm from "./contact-form";
 import recipy from './recipy';
 import jrecipy from './jrecipy';
 import payment from './payment';
+import wishlist from './wishlist';
 
 
 
@@ -16,6 +17,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
           ContactForm, 
           recipy, 
           jrecipy,
-          payment
+          payment,
+          wishlist
         ],
 }

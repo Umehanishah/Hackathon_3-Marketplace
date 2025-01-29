@@ -19,6 +19,7 @@ import CheckoutNow from "@/app/components/CheckoutNow";
 import { PageProps } from '../../../../../.next/types/app/slug/pudding/[slug]/page';
 import BagButton from '@/app/components/BagButton';
 import Precipe from '@/app/fetch_data/precipe';
+import WishlistButton from '@/app/components/wishlistbutton';
 
 
 interface Params {
@@ -105,6 +106,7 @@ const pudding = async (params:PageProps) => {
           <hr/>
           
         <div className="flex gap-2.5 pt-5">
+            
              <BagButton
               currency="PKR"
               description={pudding.description}
@@ -112,15 +114,7 @@ const pudding = async (params:PageProps) => {
               name={pudding.name}
               price={pudding.price} price_id={''}                /> 
               
-              <Link href="/checkout">
-              <CheckoutNow
-              currency="PKR"
-              description={pudding.description}
-              image={pudding.image}
-              name={pudding.name}
-              price={pudding.price} price_id={''}              
-              />
-              </Link>
+
             </div> 
 
       

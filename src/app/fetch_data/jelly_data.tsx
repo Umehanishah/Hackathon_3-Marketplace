@@ -1,138 +1,158 @@
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import Image from "next/image";
 import AddToBag from "../components/AddToBag";
-
+import WishlistButton from "../components/wishlistbutton";
 
 export interface jelly {
-    [x: string]: any;
-    name: string;
-    description: string;
-    slug: string;
-    image: {
-      asset: {
-        _id: string;
-        url: string;
-      };
+  _id: string;
+  name: string;
+  description: string;
+  slug: string;
+  image: {
+    asset: {
+      _id: string;
+      url: string;
     };
-    price: number;
-    PricewithoutDiscount: number;
-  }
-  
+  };
+  price: number;
+  priceWithoutDiscount: number;
+}
 
 export default async function Data() {
   const jelly: jelly[] = await client.fetch(
     `*[_type == "jelly"]{
-    name,
-    description,
-      "slug":slug.current,
-    price,
-    priceWithoutDiscount,
-    image{
-      asset->{
-        _id,
-        url
+      _id,
+      name,
+      description,
+      "slug": slug.current,
+      price,
+      priceWithoutDiscount,
+      image{
+        asset->{
+          _id,
+          url
+        }
       }
-    },
-}`
+    }`
   );
 
- 
-  console.log(jelly);
-
   if (!jelly || jelly.length === 0) {
-    return <p>No jellys found.</p>;
+    return <p className="text-center text-gray-600">No jellies found.</p>;
   }
 
- 
-
   return (
-    <div className="container mx-auto w-[400px] md:w-[700px] lg:w-[1000px] pt-20">
-      <hr/>
-           <h1 className="text-xl md:text-2xl text-center font-bold py-10">Our Heavenly Jello Jelly Collection</h1>
-  <div className="hidden lg:grid grid-cols-3 gap-5 gap-y-10">
-    {jelly.map((jelly) => (
-        <Link href={`/slug/jelly/${jelly.slug}`} key={jelly.slug}>
-        <div className="border rounded-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300">
-          {jelly.image?.asset?.url ? (
-            <Image
-              src={urlFor(jelly.image).url()}
-              alt={jelly.name} width={400} height={400}
-              className="w-full h-80 object-cover"
-            />
-          ) : (
-            <div className="w-full h-48 flex items-center justify-center bg-gray-200 rounded-t-lg">
-              <p>Image not available</p>
-            </div>
-          )}
-          <div className="flex justify-between items-center px-2 py-2">
-            <div>
-              <h1 className="text-lg font-bold pt-4 text-black">
-                {jelly.name}
-              </h1>
-              <h1 className="text-lg font-bold pt-2 text-black">
-                Rs. {jelly.price}
-                <span className='text-lg font-normal text-red-400 line-through pl-3 items-center'>120</span>
-              </h1>
-            </div>
-            <div>
-             
-             <AddToBag
-                           currency="PKR"
-                           description={jelly.description}
-                           image={jelly.image}
-                           name={jelly.name}
-                           price={jelly.price} price_id={''}/>
-           
-          </div>
-          </div>
-        </div>
-      </Link>
-    ))}
-  </div>
+    <div className="container mx-auto w-[400px] md:w-[700px] lg:w-[1000px] pt-5 lg:pt-0">
+      <h1 className="text-lg md:text-xl lg:text-2xl text-center font-bold py-10">
+        Our Heavenly Jello Jelly Collection
+      </h1>
 
-  {/* Mobile Scroll Area */}
-  <div className="block lg:hidden px-10">
-    <ScrollArea className="container w-[300px] md:w-[700px] lg:w-[1000px] place-self-center whitespace-nowrap rounded-md">
-      <div className="flex w-max space-x-4 p-4">
-        {jelly.map((jelly) => (
-          <figure key={jelly.slug} className="shrink-0">
-           <Link href={`/slug/jelly/${jelly.slug}`} key={jelly.slug}>
-           <div className="border">
-              <div className="overflow-hidden rounded-md">
-              <Image
-                src={urlFor(jelly.image).url()}
-                alt={jelly.name} width={400} height={400}
-                className="aspect-[1/2] h-60 w-60 object-cover"
-              />
-            </div>
-            <figcaption className="flex justify-between px-2 pt-2 text-base text-black">
-              <div>
-              {jelly.name} 
-              <br/>
-              Rs. {jelly.price}-{jelly.PricewithoutDiscount}
-              </div>
-              <div>
-             
-               <AddToBag
-                             currency="PKR"
-                             description={jelly.description}
-                             image={jelly.image}
-                             name={jelly.name}
-                             price={jelly.price} price_id={''}/>
-             
-            </div>
-            </figcaption>
-            </div>
+      {/* Grid Layout for Desktop */}
+      <div className="hidden lg:grid grid-cols-3 gap-5 gap-y-10">
+        {jelly.map((j) => (
+          <div
+            key={j._id}
+            className="border rounded-xl overflow-hidden transition transform hover:scale-105 duration-300 shadow-md"
+          >
+            <Link href={`/slug/jelly/${j.slug}`}>
+              {j.image?.asset?.url ? (
+                <Image
+                  src={urlFor(j.image).url()}
+                  alt={j.name}
+                  width={400}
+                  height={400}
+                  className="w-full h-60 object-cover"
+                />
+              ) : (
+                <div className="w-full h-60 flex items-center justify-center bg-gray-200">
+                  <p>Image not available</p>
+                </div>
+              )}
             </Link>
-          </figure>
+
+            {/* Product Info */}
+            <div className="p-4">
+              <Link href={`/slug/jelly/${j.slug}`}>
+                <h1 className="text-lg font-semibold text-black">{j.name}</h1>
+                <h1 className="text-lg font-bold pt-2 text-black">
+                  Rs. {j.price}
+                  <span className="text-sm text-red-400 line-through pl-2">
+                    Rs. {j.priceWithoutDiscount}
+                  </span>
+                </h1>
+              </Link>
+
+              {/* Buttons: Add to Bag & Wishlist */}
+              <div className="flex gap-5 place-self-end items-center mt-4">
+                <AddToBag
+                  currency="PKR"
+                  description={j.description}
+                  image={j.image}
+                  name={j.name}
+                  price={j.price}
+                  price_id={""}
+                />
+                <WishlistButton productId={j._id} />
+              </div>
+            </div>
+          </div>
         ))}
       </div>
-      <ScrollBar orientation="horizontal" />
-    </ScrollArea>
-  </div>
-</div>
-  )
+
+      {/* Mobile Scroll Layout */}
+      <div className="block lg:hidden px-10">
+        <ScrollArea className="w-full">
+          <div className="flex space-x-4 p-4">
+            {jelly.map((j) => (
+              <div
+                key={j.slug}
+                className="border rounded-xl overflow-hidden w-64 shadow-md"
+              >
+                <div className="relative">
+                  <Link href={`/slug/jelly/${j.slug}`}>
+                    <Image
+                      src={urlFor(j.image).url()}
+                      alt={j.name}
+                      width={400}
+                      height={400}
+                      className="w-full h-60 object-cover"
+                    />
+                  </Link>
+                </div>
+
+                {/* Product Info */}
+                <div className="p-4">
+                  <Link href={`/slug/jelly/${j.slug}`}>
+                    <h1 className="text-base font-semibold text-black">{j.name}</h1>
+                    <h1 className="text-lg font-bold text-black">
+                      Rs. {j.price}
+                      <span className="text-sm text-red-400 line-through pl-2">
+                        Rs. {j.priceWithoutDiscount}
+                      </span>
+                    </h1>
+                  </Link>
+
+                  {/* Buttons: Add to Bag & Wishlist */}
+                  <div className="flex justify-between items-center mt-4">
+                    <AddToBag
+                      currency="PKR"
+                      description={j.description}
+                      image={j.image}
+                      name={j.name}
+                      price={j.price}
+                      price_id={""}
+                    />
+                    <WishlistButton productId={j._id} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
+      </div>
+    </div>
+  );
 }
