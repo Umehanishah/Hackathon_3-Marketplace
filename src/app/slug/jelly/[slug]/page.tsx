@@ -113,9 +113,7 @@ const jelly = async (params:PageProps) => {
           
 
         <div className="flex gap-5 pt-5">
-            <div>
-             <WishlistButton productId={jelly._id} /> 
-             </div>
+          
              <BagButton
               currency="PKR"
               description={jelly.description}
