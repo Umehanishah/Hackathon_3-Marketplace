@@ -26,7 +26,7 @@ export default function Navigation() {
                             SK Blissful Bites: Where Every Bite is Pure Joy!
                     </p>
                     <Button className="flex-auto justify-center bg-pink-500 hover:bg-pink-700 text-white mt-8 mx-5 md:mx-0">
-                        <Link href="./shop">
+                        <Link href="/shop">
                         Shop Now </Link>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
                         </Button>
