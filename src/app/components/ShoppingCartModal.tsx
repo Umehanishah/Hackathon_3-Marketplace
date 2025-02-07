@@ -64,7 +64,7 @@ export default function ShoppingCartModal() {
                 <>
                   {Object.values(cartDetails ?? {}).map((entry) => (
                     <li key={entry.id} className="lg:flex py-6">
-                      {/* <div className="h-14 lg:h-24 w-14 lg:w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200 text-xs">
+                      <div className="h-14 lg:h-24 w-14 lg:w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200 text-xs">
                         <Image
                           src={entry.image as string}
                           alt="Product image"
@@ -72,7 +72,7 @@ export default function ShoppingCartModal() {
                           height={100}
                           className="container w-[100px] h-[100px] object-cover"
                         />
-                      </div> */}
+                      </div>
 
                       <div className="lg:ml-4 flex flex-1 flex-col pt-5 md:pt-0">
                         <div>

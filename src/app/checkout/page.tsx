@@ -122,14 +122,14 @@ export default function CheckoutPage() {
              <h2 className="text-base lg:text-lg font-semibold lg:font-bold">Order Details</h2>
             {cartData.map((product: any) => (
               <div key={product.id} className="flex gap-5 justify-between border my-2 px-5">
-                {/* Product Image
+                  {/* Product Image*/}
                 <Image
                   src={product.image}
                   alt={product.name}
                   width={100}
                   height={100}
                   className="rounded-md text-xs"
-                /> */}
+                />
                 {/* Product Name */}
                 <h2 className="text-xs md:text-base lg:text-lg items-center pt-4 font-semibold">
                   {product.name}</h2>
