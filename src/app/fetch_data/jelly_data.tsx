@@ -6,6 +6,7 @@ import Image from "next/image";
 import AddToBag from "../components/AddToBag";
 import WishlistButton from "../components/wishlistbutton";
 
+
 export interface jelly {
   _id: string;
   name: string;
@@ -39,6 +40,7 @@ export default async function Data() {
     }`
   );
 
+  // Handling the case where no jellies are found
   if (!jelly || jelly.length === 0) {
     return <p className="text-center text-gray-600">No jellies found.</p>;
   }
@@ -56,11 +58,12 @@ export default async function Data() {
             key={j._id}
             className="border rounded-xl overflow-hidden transition transform hover:scale-105 duration-300 shadow-md"
           >
+            {/* Link component, removed the extra <a> tag */}
             <Link href={`/slug/jelly/${j.slug}`}>
               {j.image?.asset?.url ? (
                 <Image
                   src={urlFor(j.image).url()}
-                  alt={j.name}
+                  alt={`Image of ${j.name} Jelly`}
                   width={400}
                   height={400}
                   className="w-full h-60 object-cover"
@@ -74,6 +77,7 @@ export default async function Data() {
 
             {/* Product Info */}
             <div className="p-4">
+              {/* Link component for product name and price */}
               <Link href={`/slug/jelly/${j.slug}`}>
                 <h1 className="text-lg font-semibold text-black">{j.name}</h1>
                 <h1 className="text-lg font-bold pt-2 text-black">
@@ -94,7 +98,7 @@ export default async function Data() {
                   price={j.price}
                   price_id={""}
                 />
-                <WishlistButton productId={j._id} productName={"j.name"} productPrice={0} productImageUrl={"j.url"} />
+                <WishlistButton productId={j._id} />
               </div>
             </div>
           </div>
@@ -111,10 +115,12 @@ export default async function Data() {
                 className="border rounded-xl overflow-hidden w-64 shadow-md"
               >
                 <div className="relative">
+                  {/* Link component for the image */}
                   <Link href={`/slug/jelly/${j.slug}`}>
                     <Image
                       src={urlFor(j.image).url()}
-                      alt={j.name}
+                     
+                      alt={`Image of ${j.name} Jelly`}
                       width={400}
                       height={400}
                       className="w-full h-60 object-cover"
@@ -122,7 +128,7 @@ export default async function Data() {
                   </Link>
                 </div>
 
-                {/* Product Info */}
+                {/* Product Info for mobile */}
                 <div className="p-4">
                   <Link href={`/slug/jelly/${j.slug}`}>
                     <h1 className="text-base font-semibold text-black">{j.name}</h1>
@@ -144,7 +150,7 @@ export default async function Data() {
                       price={j.price}
                       price_id={""}
                     />
-                    <WishlistButton productId={j._id} productName={"j.name"} productPrice={0} productImageUrl={"j.url"} />
+                    <WishlistButton productId={j._id} />
                   </div>
                 </div>
               </div>
@@ -156,3 +162,4 @@ export default async function Data() {
     </div>
   );
 }
+
