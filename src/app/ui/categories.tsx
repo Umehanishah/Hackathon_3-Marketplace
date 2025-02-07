@@ -22,29 +22,34 @@ export default function Categories() {
                 <div className="grid lg:grid-cols-2 gap-5 place-self-center">
                 <div className="container w-[300px] md:w-[500px] lg:h-[300px] place-self-center bg-cover rounded-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105  duration-300">
                     <div>
+                    <div>
                 <Link href="/shop">
                   <HoverCard>
                     <HoverCardTrigger asChild>
                       <div>
                         <Image
-                          src="/img-2.png"
+                          src="/img-2.jpg"
                           alt="img"
                           width={500}
                           height={300}
+                          className="container w-[500px] lg:h-[335px] pt-5 md:pt-0"
                         />
                       </div>
                     </HoverCardTrigger>
-                    <HoverCardContent className="text-sm md:text-base font-semibold bg-black bg-opacity-50 text-white py-4">
-                      Pudding Flavors to Delight Your Palate
+                    <HoverCardContent className="text-sm lg:text-lg font-semibold bg-black bg-opacity-50 text-white py-4">
+                    Pudding Flavors to Delight Your Palate
                     </HoverCardContent>
                   </HoverCard>
                 </Link>
+              </div>
+
               </div>
                 </div>
 
                 
                 <div className="container w-[300px] md:w-[500px] lg:h-[300px] place-self-center bg-cover rounded-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105  duration-300">
          <div>
+          <div>
                 <Link href="/shop">
                   <HoverCard>
                     <HoverCardTrigger asChild>
@@ -63,6 +68,7 @@ export default function Categories() {
                     </HoverCardContent>
                   </HoverCard>
                 </Link>
+                </div>
               </div>
                 </div>
                 

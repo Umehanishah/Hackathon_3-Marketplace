@@ -54,22 +54,22 @@ export default async function Data() {
             key={p._id}
             className="border rounded-xl overflow-hidden transition transform hover:scale-105 duration-300 shadow-md"
           >
-             <Link href={`/slug/pudding/${p.slug}`}>
-            {/* Product Image */}
-            {p.image?.asset?.url ? (
-              
-              <Image
-                src={urlFor(p.image).url()}
-                alt={p.name}
-                width={400}
-                height={400}
-                className="w-full h-60 object-cover"
-              />
-            ) : (
-              <div className="w-full h-60 flex items-center justify-center bg-gray-200">
-                <p>Image not available</p>
-              </div>
-            )}</Link>
+            {/* Link component, removed the extra <a> tag */}
+            <Link href={`/slug/pudding/${p.slug}`}>
+              {p.image?.asset?.url ? (
+                <Image
+                  src={urlFor(p.image).url()}
+                  alt={`Image of ${p.name} Jelly`}
+                  width={400}
+                  height={400}
+                  className="w-full h-60 object-cover"
+                />
+              ) : (
+                <div className="w-full h-60 flex items-center justify-center bg-gray-200">
+                  <p>Image not available</p>
+                </div>
+              )}
+            </Link>
 
             {/* Product Info */}
             <div className="p-4">

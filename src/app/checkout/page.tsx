@@ -72,13 +72,18 @@ export default function CheckoutPage() {
 
 
         // Navigate to the respective payment method page
-         if (paymentMethod === "JazzCash") {
-        router.push(`/payment/jazzcash?cart=${serializedCartData}&customer=${serializedCustomerData}`);
-      } else if (paymentMethod === "EasyPaisa") {
+       if(paymentMethod === "EasyPaisa") {
         router.push(`/payment/easypaisa?cart=${serializedCartData}&customer=${serializedCustomerData}`);
-      } else if (paymentMethod === "Bank Account") {
+      }else if (paymentMethod === "Bank Account") {
         router.push(`/payment/bankaccount?cart=${serializedCartData}&customer=${serializedCustomerData}`);
       }
+      //    if (paymentMethod === "JazzCash") {
+      //   router.push(`/payment/jazzcash?cart=${serializedCartData}&customer=${serializedCustomerData}`);
+      // } else if (paymentMethod === "EasyPaisa") {
+      //   router.push(`/payment/easypaisa?cart=${serializedCartData}&customer=${serializedCustomerData}`);
+      // } else if (paymentMethod === "Bank Account") {
+      //   router.push(`/payment/bankaccount?cart=${serializedCartData}&customer=${serializedCustomerData}`);
+      // }
       }
     } catch (error) {
       console.error("Error processing payment:", error);
@@ -122,14 +127,15 @@ export default function CheckoutPage() {
              <h2 className="text-base lg:text-lg font-semibold lg:font-bold">Order Details</h2>
             {cartData.map((product: any) => (
               <div key={product.id} className="flex gap-5 justify-between border my-2 px-5">
-                  {/* Product Image*/}
+                {/* Product Image */}
                 <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={100}
-                  height={100}
-                  className="rounded-md text-xs"
-                />
+                src={product.image ? product.image : "/placeholder-image.jpg"} // Use a placeholder if image is missing
+                alt={product.name || "Product image"}
+                width={100}
+                height={100}
+                className="rounded-md text-xs"
+              />
+
                 {/* Product Name */}
                 <h2 className="text-xs md:text-base lg:text-lg items-center pt-4 font-semibold">
                   {product.name}</h2>
@@ -218,7 +224,7 @@ export default function CheckoutPage() {
         {/* Radio group for payment method selection */}
         <div className="container w-[300px] md:w-[450px] place-self-center grid grid-rows-3 gap-3 mt-5">
           
-          <label className="inline-flex items-center">
+          {/* <label className="inline-flex items-center">
             <input
               type="radio"
               name="paymentMethod"
@@ -228,7 +234,7 @@ export default function CheckoutPage() {
               className="form-radio text-blue-500 text-xs md:text-base"
             />
             <span className="ml-2 text-xs md:text-base lg:text-lg">Pay with JazzCash</span>
-          </label>
+          </label> */}
 
           <label className="inline-flex items-center">
             <input

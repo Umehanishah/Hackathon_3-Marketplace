@@ -98,7 +98,7 @@ export default async function Data() {
                   price={j.price}
                   price_id={""}
                 />
-                <WishlistButton productId={j._id} />
+                <WishlistButton productId={j._id} productName={""} productPrice={0} productImageUrl={""} />
               </div>
             </div>
           </div>
@@ -150,7 +150,7 @@ export default async function Data() {
                       price={j.price}
                       price_id={""}
                     />
-                    <WishlistButton productId={j._id} />
+                    <WishlistButton productId={j._id} productName={""} productPrice={0} productImageUrl={""} />
                   </div>
                 </div>
               </div>
